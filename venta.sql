@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2023 a las 00:05:34
+-- Tiempo de generación: 22-09-2023 a las 23:14:33
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.4
 
@@ -42,7 +42,8 @@ CREATE TABLE `clientes` (
 INSERT INTO `clientes` (`id`, `dni`, `nombre`, `telefono`, `direccion`) VALUES
 (2, '1', 'Jorje sanic', '3432424', 'Chimaltenango'),
 (3, '2', 'Marcos Diaz', '234235325', 'Jutiapa'),
-(4, '3', 'Eto Mamtin', '2345352', 'Ciudad Guatemala');
+(5, '0000', 'C/F', '0000000', '-----------'),
+(6, '3', 'Fernanda Lopez de Leon', '34567658', 'Carretera Salvador');
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,7 @@ CREATE TABLE `config` (
 --
 
 INSERT INTO `config` (`id`, `ruc`, `nombre`, `telefono`, `direccion`, `mensaje`) VALUES
-(1, 31274832, 'Farmacia La Salud', 234235234, 'Chimaltenango', 'Farmacia La Salud');
+(1, 31274832, 'Farmacia La Salud', 234235234, 'Chimaltenango', 'Farmacia La Salud ');
 
 -- --------------------------------------------------------
 
@@ -85,18 +86,18 @@ CREATE TABLE `detalle` (
 --
 
 INSERT INTO `detalle` (`id`, `id_pro`, `cantidad`, `precio`, `id_venta`) VALUES
-(41, 3, 10, 12.00, 30),
-(42, 4, 9, 3.00, 30),
 (43, 3, 5, 12.00, 31),
 (44, 4, 10, 3.00, 31),
 (45, 3, 5, 12.00, 32),
 (46, 4, 10, 3.00, 32),
-(47, 3, 10, 12.00, 33),
-(48, 4, 10, 3.00, 33),
 (49, 3, 10, 12.00, 34),
 (50, 4, 10, 3.00, 34),
 (51, 3, 10, 12.00, 35),
-(52, 4, 5, 3.00, 35);
+(52, 4, 5, 3.00, 35),
+(53, 10, 10, 7.50, 36),
+(54, 4, 5, 3.00, 36),
+(55, 7, 10, 100.00, 36),
+(56, 3, 2, 12.00, 36);
 
 -- --------------------------------------------------------
 
@@ -118,10 +119,14 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `nombre`, `proveedor`, `stock`, `precio`) VALUES
-(3, '121212', 'Ibuprofeno 400MG', 2, 940, 12.00),
-(4, '12345678', 'Aspirina Adultos', 3, 435, 3.00),
+(3, '121212', 'Ibuprofeno 400MG', 2, 938, 12.00),
+(4, '12345678', 'Aspirina Adultos', 3, 430, 3.00),
 (5, '87654321', 'Lubricante Labios', 3, 25, 50.00),
-(6, '1234321', 'tapsin', 3, 1000, 1.00);
+(6, '1234321', 'tapsin', 3, 1000, 1.00),
+(7, '909090', 'Actonel', 4, 90, 100.00),
+(8, '789878', 'Paracetamol', 5, 60, 44.00),
+(9, '564309', 'Azitromicina', 4, 80, 15.00),
+(10, '2479053', 'Salbutamol', 5, 190, 7.50);
 
 -- --------------------------------------------------------
 
@@ -143,7 +148,9 @@ CREATE TABLE `proveedor` (
 
 INSERT INTO `proveedor` (`id`, `ruc`, `nombre`, `telefono`, `direccion`) VALUES
 (2, '232323', 'Elias Forte', '34234235', 'Chimaltenango'),
-(3, '3', 'Fabricas Moises', '242352', 'Ciudad de Guatemala');
+(3, '3', 'Fabricas Moises', '242352', 'Ciudad de Guatemala'),
+(4, '121212', 'Pharmar', '89327834', 'Ciugad de Guatemala'),
+(5, '8909234', 'Fanasa', '09789045', 'Jalapa Guatemala');
 
 -- --------------------------------------------------------
 
@@ -165,7 +172,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `pass`, `rol`) VALUES
 (3, 'Danyel Marroquin', 'danyelcm2@gmail.com', '123', 'Administrador'),
-(5, 'Admin', 'admin@gmail.com', '123', 'Administrador');
+(5, 'Admin', 'admin@gmail.com', '123', 'Administrador'),
+(6, 'Wincer', 'dwcm@gmail.com', '123', 'Asistente');
 
 -- --------------------------------------------------------
 
@@ -186,12 +194,11 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id`, `cliente`, `vendedor`, `total`, `fecha`) VALUES
-(30, 4, 'Admin', 147.00, '14/09/2023'),
 (31, 2, 'Admin', 90.00, '15/09/2023'),
 (32, 2, 'Admin', 90.00, '16/09/2023'),
-(33, 4, 'Admin', 150.00, '16/09/2023'),
 (34, 2, 'Admin', 150.00, '16/09/2023'),
-(35, 3, 'Admin', 135.00, '16/09/2023');
+(35, 3, 'Admin', 135.00, '16/09/2023'),
+(36, 6, 'Admin', 1114.00, '22/09/2023');
 
 --
 -- Índices para tablas volcadas
@@ -251,7 +258,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `config`
@@ -263,31 +270,31 @@ ALTER TABLE `config`
 -- AUTO_INCREMENT de la tabla `detalle`
 --
 ALTER TABLE `detalle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restricciones para tablas volcadas
