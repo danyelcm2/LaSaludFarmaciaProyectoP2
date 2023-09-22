@@ -25,6 +25,7 @@ ING. Haroldo Turcios</p>
  * Ingreso de datos de empresa (necesario rellenar para la funcionalidad de la facturacion y reporteria).
  Proyecto relizado con más de 5 tablas en DB.
  Consultas.
+ 
 ```java
  //correo y contraseña defauld del login.
 txtCorreo.setText("admin@gmail.com");
