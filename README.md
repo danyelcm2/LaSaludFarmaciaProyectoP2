@@ -1,6 +1,13 @@
+### SISTEMA DE VENTAS DE FARMACIA "LA SALUD"
+##### Wincer Daniel Cordova Marroquin 😎
+###### Carnet: 1990-22-8308
+<p>
+</p>
+
 #### Universidad Mariano Galvez Guatemala
 <p>Programacion ll
 ING. Haroldo Turcios</p>
+
 - Perfecto funcionamiento de Netbeans
 - Perfecto funcionamiento de gestor MySQL
 - Correcta conexion de DB
